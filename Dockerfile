@@ -39,6 +39,7 @@ USER root
 COPY --from=builder /usr/bin/spark-operator /usr/bin/
 RUN apt-get update --allow-releaseinfo-change \
     && apt-get update \
+    && apt-get -y upgrade \
     && apt-get install -y openssl curl tini \
     && rm -rf /var/lib/apt/lists/*
 COPY hack/gencerts.sh /usr/bin/
